@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/trivia_screen.dart';
 
 class InitialScreen extends StatelessWidget {
   @override
@@ -23,9 +24,16 @@ class InitialScreen extends StatelessWidget {
           SizedBox(
             height: 88.0,
           ),
+          /*onPressed é onde fazemos a função de redirecionamento de página
+          materialPageRoute faz a transição para a tela q definimos
+          context pois usaremos o mesmo contexto da tela atual, onde irá
+          preencher toda a tela */
           FlatButton(
             onPressed: () {
-              print('Começar');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TriviaScreen()),
+              );
             },
             child: Text(
               'Começar',
@@ -41,6 +49,7 @@ class InitialScreen extends StatelessWidget {
                 20,
               ),
             ),
+            //left, top, rigth, bottom
             padding: EdgeInsets.fromLTRB(60, 11, 60, 11),
           ),
         ],
