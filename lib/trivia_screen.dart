@@ -9,8 +9,15 @@ class TriviaScreen extends StatefulWidget {
 class _TriviaScreenState extends State<TriviaScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        // isso é para remover o botão voltar no top da tela
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xff374952),
+        title: Image(
+          image: AssetImage('lib/assets/icon.png'),
+        ),
+      ),
     );
   }
 }
