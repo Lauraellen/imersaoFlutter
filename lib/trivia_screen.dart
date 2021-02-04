@@ -19,6 +19,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
         title: Image(
           image: AssetImage('lib/assets/icon.png'),
         ),
+        centerTitle: true,
       ),
       body: Column(
         children: [
