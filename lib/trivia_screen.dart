@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/question.dart';
 
 // é stateful por causa da interação do usuário que altera o estado da tela
 class TriviaScreen extends StatefulWidget {
@@ -9,6 +10,7 @@ class TriviaScreen extends StatefulWidget {
 class _TriviaScreenState extends State<TriviaScreen> {
   @override
   int answer = 0;
+  List<Question> questionsList = Question.getQuestionsList();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   height: 16,
                 ),
                 Text(
-                  'O que é flutter?',
+                  questionsList[0].questionText,
                   style: TextStyle(fontSize: 18),
                 ),
               ],
@@ -61,7 +63,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   child: RadioListTile(
                     value: 1,
                     groupValue: answer,
-                    title: Text('É um framework da Google.'),
+                    title: Text(questionsList[0].option1),
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
@@ -85,7 +87,55 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   child: RadioListTile(
                     value: 2,
                     groupValue: answer,
-                    title: Text('É uma linguagem de programação.'),
+                    title: Text(questionsList[0].option2),
+                    onChanged: (int value) {
+                      setState(() {
+                        answer = value;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.15),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: Offset(1, 3))
+                    ],
+                    color: Colors.white,
+                  ),
+                  child: RadioListTile(
+                    value: 3,
+                    groupValue: answer,
+                    title: Text(questionsList[0].option3),
+                    onChanged: (int value) {
+                      setState(() {
+                        answer = value;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.15),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: Offset(1, 3))
+                    ],
+                    color: Colors.white,
+                  ),
+                  child: RadioListTile(
+                    value: 4,
+                    groupValue: answer,
+                    title: Text(questionsList[0].option4),
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
