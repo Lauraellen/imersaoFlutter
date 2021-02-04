@@ -177,7 +177,11 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   } else {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ScoreScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => ScoreScreen(
+                                maximum: questionsList.length,
+                                result: score,
+                              )),
                     );
                   }
                 },
