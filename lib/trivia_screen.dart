@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/question.dart';
+import 'package:flutter_application_1/score.dart';
 
 // é stateful por causa da interação do usuário que altera o estado da tela
 class TriviaScreen extends StatefulWidget {
@@ -10,7 +11,13 @@ class TriviaScreen extends StatefulWidget {
 class _TriviaScreenState extends State<TriviaScreen> {
   @override
   int answer = 0;
+  int score = 0;
+  int index = 0;
   List<Question> questionsList = Question.getQuestionsList();
+
+  void VerifyResponse() {
+    if (answer == questionsList[index].answer) score = score + 1;
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +45,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   height: 16,
                 ),
                 Text(
-                  questionsList[0].questionText,
+                  questionsList[index].questionText,
                   style: TextStyle(fontSize: 18),
                 ),
               ],
@@ -87,7 +94,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   child: RadioListTile(
                     value: 2,
                     groupValue: answer,
-                    title: Text(questionsList[0].option2),
+                    title: Text(questionsList[index].option2),
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
@@ -111,7 +118,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   child: RadioListTile(
                     value: 3,
                     groupValue: answer,
-                    title: Text(questionsList[0].option3),
+                    title: Text(questionsList[index].option3),
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
@@ -135,7 +142,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                   child: RadioListTile(
                     value: 4,
                     groupValue: answer,
-                    title: Text(questionsList[0].option4),
+                    title: Text(questionsList[index].option4),
                     onChanged: (int value) {
                       setState(() {
                         answer = value;
@@ -160,7 +167,20 @@ class _TriviaScreenState extends State<TriviaScreen> {
               child: FlatButton(
                 color: Color(0xffDA0175),
                 textColor: Color(0xffF7F7F7),
-                onPressed: () {},
+                onPressed: () {
+                  VerifyResponse();
+                  if (index < questionsList.length - 1) {
+                    setState(() {
+                      index = index + 1;
+                      answer = 0;
+                    });
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ScoreScreen()),
+                    );
+                  }
+                },
                 child: Text(
                   'Responder',
                   style: TextStyle(fontSize: 16),

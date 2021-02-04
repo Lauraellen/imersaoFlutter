@@ -25,6 +25,15 @@ class Question {
       3,
     ));
 
+    questions.add(Question(
+      'Qual linguagem de programação é usada pelo flutter?',
+      'C++',
+      'JAVA',
+      'DART',
+      'JAVASCRIPT',
+      3,
+    ));
+
     return questions;
   }
 }
