@@ -146,6 +146,32 @@ class _TriviaScreenState extends State<TriviaScreen> {
               ],
             ),
           ),
+          Container(
+            height: 87,
+            decoration: BoxDecoration(color: Colors.white, boxShadow: [
+              BoxShadow(
+                blurRadius: 5,
+                spreadRadius: 3,
+                color: Colors.grey.withOpacity(0.25),
+                offset: Offset(0, -1),
+              )
+            ]),
+            child: Center(
+              child: FlatButton(
+                color: Color(0xffDA0175),
+                textColor: Color(0xffF7F7F7),
+                onPressed: () {},
+                child: Text(
+                  'Responder',
+                  style: TextStyle(fontSize: 16),
+                ),
+                padding: EdgeInsets.fromLTRB(60, 11, 60, 11),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
